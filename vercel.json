@@ -1,0 +1,24 @@
+{
+  "rewrites": [
+    { "source": "/.netlify/functions/vrm", "destination": "/api/vrm" },
+    { "source": "/.netlify/functions/data", "destination": "/api/data" },
+    { "source": "/data.json", "destination": "/api/data" }
+  ],
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-cache, no-store, must-revalidate" }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://vrmapi.victronenergy.com https://www.ote-cr.cz https://www.cnb.cz https://api.open-meteo.com https://api.vercel.com;" }
+      ]
+    }
+  ]
+}
