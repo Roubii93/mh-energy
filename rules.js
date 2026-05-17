@@ -48,7 +48,7 @@ function saveRules() {
     feedAbove:         g('rule-feed-above')       || 1500,
     sellAbove:         g('rule-sell-above')        || 3500,
     sellSetpoint:      gi('rule-sell-setpoint')    || -7000,
-    socBelow:          g('rule-soc-below')         || -1000,
+    socBelow:          isNaN(g('rule-soc-below')) ? -1000 : g('rule-soc-below'),
     blockVT:           document.getElementById('rule-vt-block')?.checked ?? true,
     socProtectEnabled: document.getElementById('rule-soc-protect')?.checked ?? false,
     socProtectPct:     g('rule-soc-protect-pct')  || 15,
